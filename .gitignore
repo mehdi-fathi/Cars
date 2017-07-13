@@ -1,3 +1,4 @@
+/webroot/files/*
 /vendor/*
 /config/app.php
 /tmp/*
