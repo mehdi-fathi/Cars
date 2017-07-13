@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use CakeUpload\Controller\UploadsController;
 
 /**
  * Companies Model
@@ -88,5 +89,13 @@ class CompaniesTable extends Table
         $rules->add($rules->existsIn(['location_id'], 'Locations'));
 
         return $rules;
+    }
+
+    public function beforeSave($event, $entity, $options) {
+
+        $UploadsLogo=(new UploadsController())->upload($entity);
+
+        return $UploadsLogo;
+
     }
 }

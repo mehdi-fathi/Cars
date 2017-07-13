@@ -14,7 +14,7 @@
     </ul>
 </nav>
 <div class="companies form large-9 medium-8 columns content">
-    <?= $this->Form->create($company) ?>
+    <?= $this->Form->create($company, array('type' => 'file')) ?>
     <fieldset>
         <legend><?= __('Add Company') ?></legend>
         <?php
@@ -23,6 +23,9 @@
             echo $this->Form->control('established_date');
             echo $this->Form->control('logo_id', ['options' => $logos]);
             echo $this->Form->control('location_id', ['options' => $locations]);
+        ?>
+        <?php
+        echo $this->Form->file('file');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

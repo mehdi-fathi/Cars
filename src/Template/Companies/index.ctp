@@ -36,6 +36,7 @@
                 <td><?= h($company->city) ?></td>
                 <td><?= h($company->established_date) ?></td>
                 <td><?= $company->has('logo') ? $this->Html->link($company->logo->id, ['controller' => 'Logos', 'action' => 'view', $company->logo->id]) : '' ?></td>
+
                 <td><?= $company->has('location') ? $this->Html->link($company->location->id, ['controller' => 'Locations', 'action' => 'view', $company->location->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $company->id]) ?>

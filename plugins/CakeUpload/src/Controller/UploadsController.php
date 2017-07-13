@@ -33,7 +33,7 @@ class UploadsController extends AppController {
 	*	to save the file data in uploads table in database.
 	*	_processFile method is called from UploadsTable class to move uploaded file to webroot/files folder.
 	*/
-	public function upload() {
+	public function upload($file) {
 	    $uploads = TableRegistry::get('CakeUpload.Logos');
 	
 		$dsn = 'mysql://root:@localhost/cake_bookmarks';
@@ -41,12 +41,13 @@ class UploadsController extends AppController {
 		$conn = ConnectionManager::get('default');
 
         $uploads = TableRegistry::get('CakeUpload.Logos');
-		
+
 		if ($this->request->is('post')) {
-			$this->request->data['file']['path'] = WWW_ROOT. 'files/'. $this->request->data['file']['name'];
-			$this->request->data['file']['mime'] = $this->request->data['file']['type'];
+
+            $this->request->data['file']=  $file['file'];
+			$this->request->data['file']['path'] = WWW_ROOT. 'files/'. $file['file']['name'];
 		//to move uploaded file to webroot/files folder.
-			if (!empty($this->request->data['file']['size'])) {
+			if (!empty($file['file']['size'])) {
 				if ( $uploads->_processFile($this->request->data) ) {
 			
 			
@@ -54,17 +55,14 @@ class UploadsController extends AppController {
 							'path' =>  $this->request->data['file']['path'],
 							'created' => date('Y-m-d h:i:s',time())
 							])) {
-			 
-									$this->Flash->success(__('New file uploaded'));
-			
-									return $this->redirect(['action' => 'index']);
+			                        return true;
 					} else {
-									$this->Flash->error(__('Could not upload file'));
+									return false;
 				
 							}
 				}
 			} else {
-						 $this->Flash->error(__('Could not upload file'));
+						 return false;
 				
 				}
 		}

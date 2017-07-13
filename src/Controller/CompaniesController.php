@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use CakeUpload\Controller\UploadsController;
+
 
 /**
  * Companies Controller
@@ -55,7 +57,9 @@ class CompaniesController extends AppController
     {
         $company = $this->Companies->newEntity();
         if ($this->request->is('post')) {
+
             $company = $this->Companies->patchEntity($company, $this->request->getData());
+
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));
 
