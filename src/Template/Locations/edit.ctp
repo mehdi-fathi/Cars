@@ -13,6 +13,7 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Locations'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Location Maps'), ['controller' => 'Locations', 'action' => 'map_clustring']) ?></li>
         <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
     </ul>

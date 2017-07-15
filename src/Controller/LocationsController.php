@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Locations Controller
@@ -20,6 +21,22 @@ class LocationsController extends AppController
      */
     public function index()
     {
+        $locations = $this->paginate($this->Locations);
+
+        $this->set(compact('locations'));
+        $this->set('_serialize', ['locations']);
+    }
+
+    /**
+     * mapClustring method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function mapClustring()
+    {
+
+        $this->viewBuilder()->layout('custome_mapcluster');
+
         $locations = $this->paginate($this->Locations);
 
         $this->set(compact('locations'));
