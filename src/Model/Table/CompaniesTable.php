@@ -95,7 +95,17 @@ class CompaniesTable extends Table
 
         $UploadsLogo=(new UploadsController())->upload($entity);
 
-        return $UploadsLogo;
+        if ($UploadsLogo === false) return false;
 
+        $entity->logo_id = $UploadsLogo;
+
+    }
+
+    /**
+     * @return \App\Model\Table\LocationsTable|\Cake\ORM\Association\BelongsTo
+     */
+    public function getLocations()
+    {
+        return $this->Locations;
     }
 }

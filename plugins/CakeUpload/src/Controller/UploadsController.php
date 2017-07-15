@@ -33,8 +33,9 @@ class UploadsController extends AppController {
 	*	to save the file data in uploads table in database.
 	*	_processFile method is called from UploadsTable class to move uploaded file to webroot/files folder.
 	*/
+	public $Logos;
 	public function upload($file) {
-	    $uploads = TableRegistry::get('CakeUpload.Logos');
+        $this->Logos = TableRegistry::get('Logos');
 	
 		$dsn = 'mysql://root:@localhost/cake_bookmarks';
 		 ConnectionManager::config('default2',['url'=>$dsn]);
@@ -44,18 +45,21 @@ class UploadsController extends AppController {
 
 		if ($this->request->is('post')) {
 
+
+
+
             $this->request->data['file']=  $file['file'];
 			$this->request->data['file']['path'] = WWW_ROOT. 'files/'. $file['file']['name'];
 		//to move uploaded file to webroot/files folder.
 			if (!empty($file['file']['size'])) {
 				if ( $uploads->_processFile($this->request->data) ) {
-			
-			
-					if( $conn->insert('logos', [
-							'path' =>  $this->request->data['file']['path'],
-							'created' => date('Y-m-d h:i:s',time())
-							])) {
-			                        return true;
+
+
+                    $logo = $this->Logos->newEntity();
+                    $logo = $this->Logos->patchEntity($logo, $this->request->getData('file'));
+
+					if( $this->Logos->save($logo)) {
+			                        return $logo->id;
 					} else {
 									return false;
 				

@@ -58,7 +58,8 @@ class CompaniesController extends AppController
         $company = $this->Companies->newEntity();
         if ($this->request->is('post')) {
 
-            $company = $this->Companies->patchEntity($company, $this->request->getData());
+            $company = $this->Companies->patchEntity($company, $this->request->getData(),
+                ['associated' => ['Locations']]);
 
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));

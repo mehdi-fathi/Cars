@@ -2,6 +2,7 @@
 namespace CakeUpload\Model\Table;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+
 class LogosTable extends Table {
 	/**
 	*	validation for file upload field.
