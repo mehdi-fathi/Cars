@@ -8,9 +8,7 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Companies'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Logos'), ['controller' => 'Logos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Logo'), ['controller' => 'Logos', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Locations'), ['controller' => 'Locations', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Location'), ['controller' => 'Locations', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="companies form large-9 medium-8 columns content">

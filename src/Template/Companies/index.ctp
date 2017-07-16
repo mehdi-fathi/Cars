@@ -9,9 +9,7 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Company'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Logos'), ['controller' => 'Logos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Logo'), ['controller' => 'Logos', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Locations'), ['controller' => 'Locations', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Location'), ['controller' => 'Locations', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="companies index large-9 medium-8 columns content">
@@ -35,7 +33,14 @@
                 <td><?= h($company->name) ?></td>
                 <td><?= h($company->city) ?></td>
                 <td><?= h($company->established_date) ?></td>
-                <td><?= $company->has('logo') ? $this->Html->link($company->logo->id, ['controller' => 'Logos', 'action' => 'view', $company->logo->id]) : '' ?></td>
+
+                <td><?php
+                        echo $this->Html->image($company->logo->path, [
+                    "alt" => "Brownies",
+                    'url' => ['controller' => 'Logos', 'action' => 'view', $company->logo->id],
+                    'pathPrefix'=>'files/'
+                    ]);
+                    ?></td>
 
                 <td><?= $company->has('location') ? $this->Html->link($company->location->id, ['controller' => 'Locations', 'action' => 'view', $company->location->id]) : '' ?></td>
                 <td class="actions">

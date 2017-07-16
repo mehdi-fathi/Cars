@@ -84,7 +84,7 @@ class CompaniesController extends AppController
     public function edit($id = null)
     {
         $company = $this->Companies->get($id, [
-            'contain' => []
+            'contain' => ['Logos','Locations']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());

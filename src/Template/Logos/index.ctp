@@ -7,7 +7,6 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Logo'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
     </ul>
@@ -19,6 +18,9 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('path') ?></th>
+                <th scope="col">
+
+                </th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -27,7 +29,15 @@
             <?php foreach ($logos as $logo): ?>
             <tr>
                 <td><?= $this->Number->format($logo->id) ?></td>
-                <td><?= h($logo->path) ?></td>
+                <td>
+                    <?php
+                        echo $this->Html->image($logo->path, [
+                    "alt" => "Brownies",
+                    'url' => ['controller' => 'Logos', 'action' => 'view', $logo->id],
+                    'pathPrefix'=>'files/'
+                    ]);
+                    ?>
+                </td>
                 <td><?= h($logo->created) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $logo->id]) ?>

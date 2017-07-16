@@ -12,9 +12,7 @@
         <li><?= $this->Html->link(__('List Companies'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Company'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Logos'), ['controller' => 'Logos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Logo'), ['controller' => 'Logos', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Locations'), ['controller' => 'Locations', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Location'), ['controller' => 'Locations', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="companies view large-9 medium-8 columns content">
@@ -34,7 +32,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Location') ?></th>
-            <td><?= $company->has('location') ? $this->Html->link($company->location->, ['controller' => 'Locations', 'action' => 'view', $company->location->]) : '' ?></td>
+            <td><?= $company->has('location') ? $this->Html->link($company->location->id, ['controller' => 'Locations', 'action' => 'view', $company->location->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

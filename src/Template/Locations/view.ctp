@@ -10,7 +10,6 @@
         <li><?= $this->Html->link(__('Edit Location'), ['action' => 'edit', $location->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Location'), ['action' => 'delete', $location->id], ['confirm' => __('Are you sure you want to delete # {0}?', $location->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Locations'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Location'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?> </li>
     </ul>

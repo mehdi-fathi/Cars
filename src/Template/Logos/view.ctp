@@ -10,7 +10,6 @@
         <li><?= $this->Html->link(__('Edit Logo'), ['action' => 'edit', $logo->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Logo'), ['action' => 'delete', $logo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $logo->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Logos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Logo'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?> </li>
     </ul>
@@ -19,8 +18,14 @@
     <h3><?= h($logo->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Path') ?></th>
-            <td><?= h($logo->path) ?></td>
+            <th scope="row"><?= __('Image') ?></th>
+            <td><?php
+                        echo $this->Html->image($logo->path, [
+                "alt" => "Brownies",
+                'url' => ['controller' => 'Logos', 'action' => 'view', $logo->id],
+                'pathPrefix'=>'files/'
+                ]);
+                ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
