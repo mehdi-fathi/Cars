@@ -1,4 +1,4 @@
 /webroot/files/*
 /tmp/*
 /logs/*
-.idea
+/.idea/*
