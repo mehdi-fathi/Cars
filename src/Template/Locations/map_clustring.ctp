@@ -73,8 +73,6 @@
 
             locations.push({  'lat': parseFloat(obj.latitube) , 'lng': parseFloat(obj.longitube) });
         }
-
-        console.log(locations);
     </script>
 
 
